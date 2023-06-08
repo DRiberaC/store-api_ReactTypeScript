@@ -1,10 +1,13 @@
-import { useContext, FC } from 'react';
-import { ProductContext } from '../../context';
-import { ProductCard } from '.';
+import { FC, useContext } from 'react';
+import { FavoriteContex, ProductContext } from '../../context';
+import { FavoriteCard, ProductCard } from '.';
 
 export const ProductsList: FC = () => {
 
+
     const { products, isLoading } = useContext(ProductContext);
+    const { favorites } = useContext(FavoriteContex);
+
 
     if (isLoading) {
         return (
@@ -14,13 +17,25 @@ export const ProductsList: FC = () => {
 
     return (
         <>
-            <h2>Todos los productos</h2>
-            <div className='grid grid-cols-4 gap-4'>
-                {
-                    products.map((product) =>
-                        <ProductCard product={product} key={product.id} />
-                    )
-                }
+            <div>
+                <h2 className='font-semibold'>Favoritos</h2>
+                <div className='grid grid-cols-4 gap-4'>
+                    {
+                        favorites.map((product) =>
+                            <FavoriteCard product={product} key={product.id} />
+                        )
+                    }
+                </div>
+            </div>
+            <div className='mt-4'>
+                <h2 className='font-semibold'>Todos los productos</h2>
+                <div className='grid grid-cols-4 gap-4'>
+                    {
+                        products.map((product) =>
+                            <ProductCard product={product} key={product.id} />
+                        )
+                    }
+                </div>
             </div>
         </>
     )

@@ -1,17 +1,17 @@
 import { FC, useContext } from 'react';
 import { IProduct } from '../../interfaces/products';
 import { FavoriteContex } from '../../context';
-
 interface Props {
     product: IProduct
 }
 
-export const ProductCard: FC<Props> = ({ product }) => {
+export const FavoriteCard: FC<Props> = ({ product }) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        const AllFavorites = [...favorites, product];
-        SetFavorites(AllFavorites)
+
+        const newArrayFavorite = favorites.filter(favoriteItem => favoriteItem != product)
+        SetFavorites(newArrayFavorite);
     }
 
     const { favorites } = useContext(FavoriteContex);
@@ -34,8 +34,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
                 <input
                     type='submit'
-                    value='Agregar a favoritos'
-                    className='rounded-md bg-indigo-600 cursor-pointer hover:bg-indigo-700 transition-all mt-2 p-3 text-white'>
+                    value='Quitar de favoritos'
+                    className='rounded-md bg-red-600 cursor-pointer hover:bg-red-700 transition-all mt-2 p-3 text-white'>
                 </input>
             </form>
         </div>
