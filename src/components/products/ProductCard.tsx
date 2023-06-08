@@ -12,6 +12,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
         e.preventDefault();
         const AllFavorites = [...favorites, product];
         SetFavorites(AllFavorites)
+        localStorage.setItem('favorites', JSON.stringify(AllFavorites));
+
     }
 
     const { favorites } = useContext(FavoriteContex);

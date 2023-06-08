@@ -17,17 +17,8 @@ export const ProductsList: FC = () => {
 
     return (
         <>
+
             <div>
-                <h2 className='font-semibold'>Favoritos</h2>
-                <div className='grid grid-cols-4 gap-4'>
-                    {
-                        favorites.map((product) =>
-                            <FavoriteCard product={product} key={product.id} />
-                        )
-                    }
-                </div>
-            </div>
-            <div className='mt-4'>
                 <h2 className='font-semibold'>Todos los productos</h2>
                 <div className='grid grid-cols-4 gap-4'>
                     {
@@ -37,6 +28,18 @@ export const ProductsList: FC = () => {
                     }
                 </div>
             </div>
+
+            <div className='mt-4'>
+                <h2 className='font-semibold'>Favoritos</h2>
+                <div className='grid grid-cols-4 gap-4'>
+                    {
+                        favorites.map((product) =>
+                            <FavoriteCard product={product} key={product.id} />
+                        )
+                    }
+                </div>
+            </div>
+
         </>
     )
 }

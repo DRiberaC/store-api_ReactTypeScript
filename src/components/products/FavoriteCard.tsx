@@ -12,6 +12,8 @@ export const FavoriteCard: FC<Props> = ({ product }) => {
 
         const newArrayFavorite = favorites.filter(favoriteItem => favoriteItem != product)
         SetFavorites(newArrayFavorite);
+
+        localStorage.setItem('favorites', JSON.stringify(newArrayFavorite));
     }
 
     const { favorites } = useContext(FavoriteContex);
