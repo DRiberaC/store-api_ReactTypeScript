@@ -9,14 +9,14 @@ interface Props {
 
 export const ProductProvider: FC<Props> = ({ children }) => {
 
-    const [products, setProducts] = useState([] as IProduct[]);
-    const [isLoading, setIsLoading] = useState(false as boolean);
+    const [products, SetProducts] = useState([] as IProduct[]);
+    const [isLoading, SetIsLoading] = useState(false as boolean);
 
     const getAllProducts = async () => {
-        setIsLoading(true);
+        SetIsLoading(true);
         const { data } = await productsDb.get('/products');
-        setIsLoading(false);
-        setProducts(data);
+        SetIsLoading(false);
+        SetProducts(data);
     };
 
     useEffect(() => {

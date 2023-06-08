@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { IProduct } from '../../interfaces/products';
 
 interface Props {
@@ -6,6 +6,13 @@ interface Props {
 }
 
 export const ProductCard: FC<Props> = ({ product }) => {
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        // console.log("Agregar a favoritos");
+    }
+
+
     return (
         <div className='flex flex-col justify-center p-5 rounded-lg shadow-lg'>
             <div>
@@ -16,15 +23,17 @@ export const ProductCard: FC<Props> = ({ product }) => {
                 />
             </div>
 
-            <div>
+            <form onSubmit={handleSubmit} >
                 <h3 className='font-semibold mb-3'>{product.title}</h3>
                 <p className='text-gray-500'>{product.description}</p>
                 <p className='text-indigo-600'>{product.price}$</p>
 
-                <button className='rounded-md bg-indigo-600 cursor-pointer hover:bg-indigo-700 transition-all mt-2 p-3 text-white'>
-                    Agregar a favoritos
-                </button>
-            </div>
+                <input
+                    type='submit'
+                    value='Agregar a favoritos'
+                    className='rounded-md bg-indigo-600 cursor-pointer hover:bg-indigo-700 transition-all mt-2 p-3 text-white'>
+                </input>
+            </form>
         </div>
     )
 }

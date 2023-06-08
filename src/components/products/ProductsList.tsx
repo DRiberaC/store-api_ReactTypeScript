@@ -1,4 +1,3 @@
-import React from 'react'
 import { useContext, FC } from 'react';
 import { ProductContext } from '../../context';
 import { ProductCard } from '.';
